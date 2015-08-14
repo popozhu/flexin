@@ -1,0 +1,55 @@
+<article class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    <% if (post.link || post.title){ %>
+	<header class="article-header">
+	    <div class="article-title">
+		<div class="title"><%= post.title %></div> 
+		<small>
+		    <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, config.date_format) %></time>
+		</small>
+	    </div>
+	</header>
+    <% } %>
+
+    <div class="article-entry" itemprop="articleBody">
+	<% if (post.excerpt && index){ %>
+	    <%- post.excerpt %>
+	    <% if (theme.excerpt_link){ %>
+		<p class="article-more-link">
+		    <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+		</p>
+	    <% } %>
+	<% } else { %>
+	    <% var toc_content = toc(post.content, {list_number: false}); %>
+	    <% if (toc_content) { %>
+		<div class="article-toc"> Toc <%- toc_content %> </div>
+	    <% } %>
+
+	    <%- post.content %>
+	<% } %>
+
+	<div>
+	    <div>Categories: <%- list_categories(post.categories, {show_count: false, style: '', separator: ','}) %> </div>
+	    <div>Tags:<%- list_tags(post.tags, {show_count: false,  style: '', separator: ','})%> </div>
+	</div>
+    </div>
+
+    <hr />
+    <footer class="article-footer">
+      <% if (config.disqus_shortname){ %>
+        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"></a>
+      <% } %>
+    </footer>
+  </div>
+  <% if (!index){ %>
+    <%- partial('nav') %>
+  <% } %>
+</article>
+
+<% if (!index && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+<% } %>

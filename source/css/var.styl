@@ -1,0 +1,23 @@
+// Color
+color-background = #eee
+color-font = #444
+color-meta = #999
+color-border = #ddd
+color-link = #0E83CD
+color-link2 = #64b0fa
+
+// Font
+font-default = "Open Sans",sans-serif
+
+
+vendor(prop, args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  {prop} args
+
+
+// flex container
+flex_ctn()
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
