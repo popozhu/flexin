@@ -1,7 +1,14 @@
 <div class="banner">
-    <span class="site-title"> <a href="<%- url_for() %>" id="logo"><%= config.title %></a> </span>
+    <div>
+        <span class="site-title"> <a href="<%- url_for() %>" id="logo"><%= config.title %></a> </span>
 
-    <% if (theme.subtitle){ %>
-    <span class="site-subtitle"> <%= theme.subtitle %> </span>
-    <% } %>
+        <% if (theme.subtitle){ %>
+        <span class="site-subtitle"> <%= theme.subtitle %> </span>
+        <% } %>
+    </div>
+
+    <div class="banner-right">
+        <span class="banner-item"> <a href="<%- url_for('/archives') %>"> Misc </a> </span>
+        <span class="banner-item"> <a href="<%- url_for('/about') %>"> About </a> </span>
+    </div>
 </div>

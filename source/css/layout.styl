@@ -7,6 +7,7 @@ body
   vendor(justify-content, center)
   vendor(align-items, center)
   // font
+  font-size: 14px;
   color color-font
   font-family font-default
   text-shadow 0 0 1px transparent
@@ -22,6 +23,15 @@ a
   min-width: 18rem
 
 .banner
-  font-size: 3rem
+  flex_ctn()
+  vendor(justify-content, space-between)
+  vendor(align-items, center)
+  //vendor(flex-direction, row-reverse)
+  font-size: 2rem
+  margin-top: 1rem
   .site-subtitle
     font-size: 1rem
+  .banner-right
+    font-size: 1.5rem
+  .banner-item
+    margin-left: 0.3rem

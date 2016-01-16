@@ -12,6 +12,14 @@ if (is_category()) {
 } else if (is_archive()) {
     if (is_current('archives/', true)) { 
 %>
+    <div>
+	<div class="archive_tip"> Categories </div>
+	<%- list_categories(site.categories, {style:''}) %>
+    </div>
+    <div>
+	<div class="archive_tip"> Tags </div>
+	<%- tagcloud(site.tags, {amount:100, min_font:1, max_font:3, unit:'rem'}) %>
+    </div>
     <div class="archive_detail">
 	<div>
 	    <div class="archive_tip"> Recent Posts </div>
@@ -21,14 +29,6 @@ if (is_category()) {
 	    <div class="archive_tip"> Archives </div>
 	    <%- list_archives({format:'MMMM YYYY'}) %>
 	</div>
-    </div>
-    <div>
-	<div class="archive_tip"> Categories </div>
-	<%- list_categories(site.categories, {style:''}) %>
-    </div>
-    <div>
-	<div class="archive_tip"> Tags </div>
-	<%- tagcloud(site.tags, {amount:100, min_font:1, max_font:3, unit:'rem'}) %>
     </div>
 
 <%
