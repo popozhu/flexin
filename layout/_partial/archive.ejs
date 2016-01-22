@@ -49,12 +49,16 @@ if (is_category()) {
 <div class="archive_title"> 
     <a href="<%- url_for(post.path) %>"><%= post.title %></a> 
 </div>
-<div>
-    <a href="<%- url_for(config.archive_dir + '/' + post.date.year()) %>"><%- date(post.date, 'YYYY/M/D') %></a> 
-    <span>&raquo;<span>
-    <span><%- list_categories(post.categories, {show_count: false, style: '', separator: ','}) %> </span>
-    <span>&raquo;<span>
-    <%- list_tags(post.tags, {show_count: false,  style: '', separator: ','})%>
+<div class="archive_title_padding">
+    <span class="archive_title_padding_item">
+        <a href="<%- url_for(config.archive_dir + '/' + post.date.year()) %>"><%- date(post.date) %></a> 
+    </span>
+    <span class="archive_title_padding_item archive_title_split">&raquo;</span>
+    <span class="archive_title_padding_item"><%- list_categories(post.categories, {show_count: false, style: '', separator: ','}) %> </span>
+    <span class="archive_title_padding_item archive_title_split">&raquo;</span>
+    <span class="archive_title_padding_item">
+        <%- list_tags(post.tags, {show_count: false,  style: '', separator: ','})%>
+    </span>
 </div>
 <% }) %>
 </div>
